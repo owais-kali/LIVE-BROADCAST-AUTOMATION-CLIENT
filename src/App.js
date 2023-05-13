@@ -1,4 +1,4 @@
-import React, { Component, Suspense } from 'react'
+import React, { Component, Suspense, useState } from 'react'
 import { HashRouter, Route, Routes } from 'react-router-dom'
 import './scss/style.scss'
 
@@ -18,7 +18,19 @@ const Page404 = React.lazy(() => import('./views/pages/page404/Page404'))
 const Page500 = React.lazy(() => import('./views/pages/page500/Page500'))
 
 class App extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      token: null
+    };
+  }
+
   render() {
+    if(!this.state.token) {
+      return <Login/>
+    }
+
     return (
       <HashRouter>
         <Suspense fallback={loading}>

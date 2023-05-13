@@ -1,4 +1,5 @@
-import React from 'react'
+import React, {useState} from 'react'
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import {
@@ -17,7 +18,27 @@ import {
 import CIcon from '@coreui/icons-react'
 import { cilLockLocked, cilUser } from '@coreui/icons'
 
-const Login = () => {
+import env from '@components/env'
+
+async function loginUser(credentials) {
+  return fetch('http://localhost:8080/login', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(credentials)
+  })
+    .then(data => data.json())
+ }
+
+const Login = ({ setToken }) => {
+  const [username, setUserName] = useState();
+  const [password, setPassword] = useState();
+
+  const handleSubmit = async e => {
+    console.log("hello there: "+env.express_app_url)
+  }
+
   return (
     <div className="bg-light min-vh-100 d-flex flex-row align-items-center">
       <CContainer>
@@ -26,7 +47,7 @@ const Login = () => {
             <CCardGroup>
               <CCard className="p-4">
                 <CCardBody>
-                  <CForm>
+                  <CForm onSubmit={handleSubmit}>
                     <h1>Login</h1>
                     <p className="text-medium-emphasis">Sign In to your account</p>
                     <CInputGroup className="mb-3">
@@ -47,13 +68,8 @@ const Login = () => {
                     </CInputGroup>
                     <CRow>
                       <CCol xs={6}>
-                        <CButton color="primary" className="px-4">
+                        <CButton color="primary" className="px-4" onClick={handleSubmit}>
                           Login
-                        </CButton>
-                      </CCol>
-                      <CCol xs={6} className="text-right">
-                        <CButton color="link" className="px-0">
-                          Forgot password?
                         </CButton>
                       </CCol>
                     </CRow>
@@ -67,5 +83,9 @@ const Login = () => {
     </div>
   )
 }
+
+Login.propTypes = {
+  setToken: PropTypes.func.isRequired
+};
 
 export default Login
