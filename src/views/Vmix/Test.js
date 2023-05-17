@@ -54,8 +54,7 @@ function GT_Card({ GT_Name, GT_TEXTS }) {
           <CListGroup flush>
             {texts.map(input => (
               <CFormFloating key="1" className="mb-3">
-                <CFormInput id="floatingInput"
-                  onInput={e => OnTextChange(input, e.target.value)} />
+                <CFormInput id="floatingInput" onInput={e => OnTextChange(input, e.target.value)} placeholder="value"/>
                 <CFormLabel htmlFor="floatingInput">{input}</CFormLabel>
               </CFormFloating>
             ))}
