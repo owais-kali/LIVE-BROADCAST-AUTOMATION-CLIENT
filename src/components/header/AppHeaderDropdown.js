@@ -1,4 +1,8 @@
 import React from 'react'
+import PropTypes from 'prop-types';
+
+import {setToken} from 'src/App'
+
 import {
   CAvatar,
   CBadge,
@@ -27,10 +31,9 @@ import avatar8 from './../../assets/images/avatars/8.jpg'
 import { setToken } from '../useToken'
 
 const AppHeaderDropdown = () => {
-  function LockAccount(){
-    setToken({
-      "error":"No token is set!"
-    })
+
+  const handleLockAccount = async e => {
+    setToken({ "error: ": "You are logged out!" });
     window.location.reload(false);
   }
 
@@ -93,8 +96,8 @@ const AppHeaderDropdown = () => {
           </CBadge>
         </CDropdownItem>
         <CDropdownDivider />
-        <CDropdownItem onClick={LockAccount}>
-          <CIcon icon={cilLockLocked} className="me-2"/>
+        <CDropdownItem href="#" onClick={handleLockAccount}>
+          <CIcon icon={cilLockLocked} className="me-2" />
           Lock Account
         </CDropdownItem>
       </CDropdownMenu>
