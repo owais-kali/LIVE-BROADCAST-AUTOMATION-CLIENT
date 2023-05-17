@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom'
-import * as Axios from 'src/components/Axios'
-import * as env from 'src/components/env'
+import * as Axios from 'components/Axios'
+import * as env from 'components/env'
 
 import {
   CButton,
