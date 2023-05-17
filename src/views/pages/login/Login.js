@@ -39,6 +39,7 @@ const Login = ({ setToken }) => {
       password: password
     });
     setToken(res.data);
+    window.location.reload(false);
   }
 
   return (
