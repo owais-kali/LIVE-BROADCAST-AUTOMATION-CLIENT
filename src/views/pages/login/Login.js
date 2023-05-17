@@ -16,6 +16,9 @@ import {
   CInputGroup,
   CInputGroupText,
   CRow,
+  CFormFeedback,
+  CFormLabel,
+  CFormSelect,
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
 import { cilHandPointLeft, cilLockLocked, cilUser } from '@coreui/icons'
@@ -34,11 +37,13 @@ const Login = ({ setToken }) => {
 
   const handleSubmit = async e => {
     e.preventDefault();
+    if (username == null || password == null) return
     const res = await loginUser({
       email: username,
       password: password
     });
     setToken(res.data);
+    window.location.reload(false);
   }
 
   return (
@@ -49,7 +54,8 @@ const Login = ({ setToken }) => {
             <CCardGroup>
               <CCard className="p-4">
                 <CCardBody>
-                  <CForm onSubmit={handleSubmit}>
+                  <CForm onSubmit={handleSubmit} className="row g-3 needs-validation" noValidate
+                    validated={false}>
                     <h1>Login</h1>
                     <p className="text-medium-emphasis">Sign In to your account</p>
                     <CInputGroup className="mb-3">
@@ -71,7 +77,7 @@ const Login = ({ setToken }) => {
                     </CInputGroup>
                     <CRow>
                       <CCol xs={6}>
-                        <CButton color="primary" onClick={handleSubmit} className="px-4">
+                        <CButton type='submit' color="primary" className="px-4">
                           Login
                         </CButton>
                       </CCol>

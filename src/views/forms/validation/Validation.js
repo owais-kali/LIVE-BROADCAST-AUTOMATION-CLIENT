@@ -353,8 +353,8 @@ const Validation = () => {
                 </CCol>
                 <CCol md={6}>
                   <CFormLabel htmlFor="validationServer03">City</CFormLabel>
-                  <CFormInput type="text" id="validationServer03" invalid required />
-                  <CFormFeedback invalid>Please provide a valid city.</CFormFeedback>
+                  <CFormInput type="text" id="validationServer03" valid required />
+                  <CFormFeedback valid>Please provide a valid city.</CFormFeedback>
                 </CCol>
                 <CCol md={3}>
                   <CFormLabel htmlFor="validationServer04">City</CFormLabel>

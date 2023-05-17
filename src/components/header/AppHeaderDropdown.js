@@ -1,4 +1,8 @@
 import React from 'react'
+import PropTypes from 'prop-types';
+
+import {setToken} from 'src/App'
+
 import {
   CAvatar,
   CBadge,
@@ -25,6 +29,12 @@ import CIcon from '@coreui/icons-react'
 import avatar8 from './../../assets/images/avatars/8.jpg'
 
 const AppHeaderDropdown = () => {
+
+  const handleLockAccount = async e => {
+    setToken({ "error: ": "You are logged out!" });
+    window.location.reload(false);
+  }
+
   return (
     <CDropdown variant="nav-item">
       <CDropdownToggle placement="bottom-end" className="py-0" caret={false}>
@@ -84,7 +94,7 @@ const AppHeaderDropdown = () => {
           </CBadge>
         </CDropdownItem>
         <CDropdownDivider />
-        <CDropdownItem href="#">
+        <CDropdownItem href="#" onClick={handleLockAccount}>
           <CIcon icon={cilLockLocked} className="me-2" />
           Lock Account
         </CDropdownItem>
