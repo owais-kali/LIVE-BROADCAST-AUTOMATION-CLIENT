@@ -28,8 +28,6 @@ import CIcon from '@coreui/icons-react'
 
 import avatar8 from './../../assets/images/avatars/8.jpg'
 
-import { setToken } from '../useToken'
-
 const AppHeaderDropdown = () => {
 
   const handleLockAccount = async e => {

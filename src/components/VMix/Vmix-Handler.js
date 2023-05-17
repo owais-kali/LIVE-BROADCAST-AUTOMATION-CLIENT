@@ -2,10 +2,10 @@
 // import { Elimination as Elimination_Callback } from "@Vmix/Callbacks/Elimination"
 
 export class VMix_Handler {
-  private url: string;
-  private ActiveGTs: Map<number, string> = new Map();
+  url;
+  ActiveGTs;
 
-  constructor(vmix_url: string) {
+  constructor(vmix_url) {
     this.url = vmix_url;
   }
 

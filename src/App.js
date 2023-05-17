@@ -2,8 +2,6 @@ import React, { Component, Suspense, useState } from 'react'
 import { HashRouter, Route, Routes } from 'react-router-dom'
 import './scss/style.scss'
 
-import {getToken, setToken} from './components/useToken'
-
 const loading = (
   <div className="pt-3 text-center">
     <div className="sk-spinner sk-spinner-pulse"></div>
