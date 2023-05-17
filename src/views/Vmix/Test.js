@@ -32,6 +32,9 @@ import { DocsExample } from 'src/components'
 
 import ReactImg from 'src/assets/images/react.jpg'
 
+import { Elimination } from 'src/services/Vmix/Callbacks/Elimination.ts'
+import {LoadInGameGTs} from 'src/services/Vmix/GTs/GTs.ts'
+
 function GT_Card({ GT_Name, GT_TEXTS }) {
 
   const [texts, setTexts] = useState(GT_TEXTS);
@@ -41,6 +44,59 @@ function GT_Card({ GT_Name, GT_TEXTS }) {
     let NewText = texts;
     NewText[key] = value;
     setTexts(NewText)
+  }
+
+  const OnShowClicked = () => {
+    console.log("show button clicked!")
+    let playerinfo = {
+      "playerInfoList": [
+        {
+          "uId": 510047574,
+          "playerName": "X6ãƒ»Ù¢Ù©",
+          "playerOpenId": "70461891675432",
+          "picUrl": "",
+          "showPicUrl": false,
+          "teamId": 3,
+          "teamName": "Team3",
+          "character": "None",
+          "isFiring": false,
+          "bHasDied": false,
+          "location": {
+            "x": 151918,
+            "y": 609857,
+            "z": 129
+          },
+          "health": 100,
+          "healthMax": 100,
+          "liveState": 5,
+          "killNum": 10,
+          "killNumBeforeDie": 0,
+          "playerKey": 2341287079,
+          "gotAirDropNum": 0,
+          "maxKillDistance": 0,
+          "damage": 0,
+          "killNumInVehicle": 0,
+          "killNumByGrenade": 0,
+          "rank": 2,
+          "isOutsideBlueCircle": false,
+          "inDamage": 0,
+          "heal": 0,
+          "headShotNum": 0,
+          "survivalTime": 0,
+          "driveDistance": 0,
+          "marchDistance": 0,
+          "assists": 0,
+          "outsideBlueCircleTime": 0,
+          "knockouts": 0,
+          "rescueTimes": 0,
+          "useSmokeGrenadeNum": 0,
+          "useFragGrenadeNum": 0,
+          "useBurnGrenadeNum": 0,
+          "useFlashGrenadeNum": 0
+        }
+      ]
+    }
+    Elimination(playerinfo)
   }
 
   return (
@@ -54,7 +110,7 @@ function GT_Card({ GT_Name, GT_TEXTS }) {
           <CListGroup flush>
             {texts.map(input => (
               <CFormFloating key="1" className="mb-3">
-                <CFormInput id="floatingInput" onInput={e => OnTextChange(input, e.target.value)} placeholder="value"/>
+                <CFormInput id="floatingInput" onInput={e => OnTextChange(input, e.target.value)} placeholder="value" />
                 <CFormLabel htmlFor="floatingInput">{input}</CFormLabel>
               </CFormFloating>
             ))}
@@ -62,8 +118,8 @@ function GT_Card({ GT_Name, GT_TEXTS }) {
           <CCardBody className="align-items-center mb-3">
             <CRow className="align-items-center mb-3">
               <CCol xs>
-                <CButton href="#">Show</CButton>
-                <CButton href="#">Hide</CButton>
+                <CButton onClick={OnShowClicked}>Show</CButton>
+                <CButton>Hide</CButton>
               </CCol>
             </CRow>
           </CCardBody>
